@@ -3,9 +3,22 @@
 
 This repository contains the frontend application for the Gold Shop Management system. It's a simple HTML/CSS/JavaScript client designed to interact with the backend API.
 
-## 🤝 Collaboration and Development Workflow
+## 🚀 Getting Started
 
-This frontend repository is managed as a **Git submodule** within the main `CaptainDock` repository. This ensures that the frontend and backend versions are always in sync for any given release.
+### Using the Backend API
+
+To develop the frontend, you will need the backend server running. By default, the backend is available at:
+
+-   **API Base URL:**  `http://localhost:8000`
+    
+-   **Interactive API Docs (Swagger):**  `http://localhost:8000/docs`
+    
+
+You can use the Swagger documentation to explore all available endpoints, see their required parameters, and test them directly from your browser.
+
+## 🤝 Git Workflow & Release Process
+
+This project follows a standard Git flow where `develop` is for active work and `main` is for stable releases only.
 
 ### Developer Workflow
 
@@ -23,22 +36,65 @@ This frontend repository is managed as a **Git submodule** within the main `Capt
     ```
     
 4.  **Run the Backend:** Follow the instructions in the main `CaptainDock` README to run the project in either development or production mode. This will give you a live API to develop against.
+
+### 1. Day-to-Day Development
+
+-   **Always work on the `develop` branch.** All new features and bug fixes should be done in feature branches that are then merged into `develop`.
+    
+-   To get the latest changes from other developers, pull from the `develop` branch:
+    
+    ```
+    git checkout develop
+    git pull origin develop
+    
+    ```
     
 
-### Updating the Backend Submodule
+### 2. Creating a New Release
 
-If you are working on a feature that requires a newer version of the backend API that has been released to `main`, you can update your local `backend` submodule from the `CaptainDock` root directory:
+When the features in the `develop` branch are complete, tested, and ready for a new release, follow these steps to merge them into the `main` branch.
+
+**Step 1: Sync `develop`** Ensure your local `develop` branch has the latest code.
 
 ```
-# This command updates all submodules to the latest commit on their tracked branch
-git submodule update --remote --merge
+git checkout develop
+git pull origin develop
 
 ```
 
-## 🚀 Release Process
+**Step 2: Merge `develop` into `main`** Switch to the `main` branch, pull its latest version, and then merge `develop` into it.
 
-1.  **Complete a Feature:** When a frontend feature is complete and fully tested on the `develop` branch, it is ready for release.
-    
-2.  **Merge to `main`:** Create a pull request to merge your changes from the `develop` branch into the `main` branch of this `frontend` repository.
-    
-3.  **Update the Main Project:** After the merge is complete, a project lead will update the `frontend` submodule pointer in the main `CaptainDock` repository to point to the new commit on the `main` branch. This officially incorporates the new frontend version into the next release of the overall application.
+```
+git checkout main
+git pull origin main
+git merge develop
+
+```
+
+_At this point, resolve any merge conflicts if they occur._
+
+**Step 3: Tag the Release** Create a new version tag on the `main` branch. Use semantic versioning (e.g., `v1.0.0`, `v1.1.0`).
+
+```
+# Example for version 1.0.0
+git tag -a v1.0.0 -m "Release version 1.0.0"
+
+```
+
+**Step 4: Push the Release to the Remote Repository** Push both the `main` branch and the new tags to the remote repository. The `--tags` flag is crucial.
+
+```
+git push origin main --tags
+
+```
+
+**Step 5: Sync `develop` Back from `main`** This is a critical final step to ensure the `develop` branch also receives the version tag and any merge-related commits from the release process.
+
+```
+git checkout develop
+git merge main
+git push origin develop
+
+```
+
+Your `main` branch now contains the new stable release, and your `develop` branch is correctly synced and ready for the next cycle of development.
