@@ -1,0 +1,17 @@
+.orders {
+  margin-top: 30px;
+  justify-content: space-around;
+}
+
+.order-container {
+  align-items: center;
+  padding: 10px;
+  justify-content: space-evenly;
+  border: solid 1px #e7e7e7;
+  border-radius: 10px;
+  display: flex;
+}
+
+.orders-description p {
+  padding: 10px 0;
+}

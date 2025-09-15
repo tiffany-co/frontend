@@ -1,0 +1,52 @@
+.user-display {
+  padding: 0 10px;
+}
+
+.sidear-dashboard-menu-item {
+  margin: 2px 0;
+  padding: 16px 10px;
+  transition: 0.3s;
+}
+.sidear-dashboard-menu-item > i {
+  color: #2f44bd;
+}
+.sidebar-link > i {
+  color: #2f44bd;
+}
+.user-info p {
+  margin: 15px 0;
+}
+
+.sidear-dashboard-menu-item:hover {
+  background-color: #e1d6d4;
+  color: #000000;
+}
+
+.logout:hover {
+  background-color: #a70016b0;
+  color: #ffffff;
+}
+
+.dropdown {
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  margin-top: 20px;
+  background-color: #eea6a6;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content li {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-visible {
+  display: block;
+}

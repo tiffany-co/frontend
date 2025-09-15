@@ -1,0 +1,31 @@
+.confirm-password {
+  margin: 10px 0;
+}
+.form-content>div>.input-form{
+  background-color: #fff7f7;
+}
+.forgot-pass-text {
+  cursor: pointer;
+  background-color: unset;
+  color: #fff7f7;
+  font-size: 14px;
+  border: unset;
+}
+
+.forgot-pass-text:hover {
+  color: #ffffff;
+}
+.form-input  {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.show-pass-icon{
+  position: absolute;
+  cursor: pointer;
+  left: 3%;
+}
+.show-pass{
+  font-size: 14px;
+}

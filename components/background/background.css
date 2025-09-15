@@ -1,0 +1,26 @@
+.header__background {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: #c67700; /* fallback for old browsers */
+  background: linear-gradient(to right, #2a5bce, #182848);
+
+  background-size: 180% 180%;
+  animation: gradient-animation 5s ease infinite;
+  overflow: hidden;
+  z-index: -1;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
