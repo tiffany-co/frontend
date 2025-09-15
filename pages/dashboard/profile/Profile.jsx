@@ -12,9 +12,11 @@ function Profile() {
   const userUpdateMutation = useUserUpdate();
   const { data: user } = useCurrentUser();
   useEffect(() => {
-    setUsername(user.username);
-    setFullName(user.full_name);
-    setPhoneNumber(user.phone_number);
+    if (user) {
+      setUsername(user.username);
+      setFullName(user.full_name);
+      setPhoneNumber(user.phone_number);
+    }
   }, [user]);
 
   const handleOnClick = () => {
