@@ -21,7 +21,6 @@ export const login = async ({ username, password }) => {
   //save token
   const { access_token, token_type } = res.data;
   if (access_token) {
-    console.log(localStorage.getItem(access_token));
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("token_type", token_type || "bearer");
   }
