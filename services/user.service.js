@@ -1,14 +1,24 @@
 import http from "@/api/http";
 
 export const getCurrentUser = async () => {
-  const token = localStorage.getItem("access_token");
-  if (!token) throw new Error("No access token");
+  const response = await http.get("/users/me");
 
-  const response = await http.get("/users/me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+  return response.data;
+};
+export const updateCurrentUser = async ({
+  username,
+  full_name,
+  phone_number,
+  password,
+  //   is_active,
+}) => {
+  const response = await http.put("/users/me", {
+    username: username,
+    full_name: full_name,
+    phone_number: phone_number,
+    password: password,
+    // is_active,
   });
 
-  return response.data; 
+  return response.data;
 };
