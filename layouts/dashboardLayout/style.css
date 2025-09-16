@@ -1,0 +1,24 @@
+.dashboard-container {
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-container {
+    flex-direction: column-reverse;
+  }
+  .dashboard-sidebar {
+    margin-bottom: 3rem;
+  }
+}
+
+.dashboard-sidebar {
+  padding: 20px 0;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+}
+
+.dashboard-content {
+  border: 1px solid #d8d8d8;
+  padding: 20px;
+}
