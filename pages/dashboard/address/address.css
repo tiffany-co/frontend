@@ -1,0 +1,17 @@
+.create-address > .button-39 {
+  margin: 0 5px;
+}
+
+.show-address{
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+ .create-address>input{
+  margin: 10px 10px;
+ }
+ .create-address>.select-city{
+  margin-top: 10px;
+  margin-bottom: 10px;
+ }
+}

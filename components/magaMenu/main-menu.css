@@ -1,0 +1,146 @@
+.main-menu-container {
+  align-items: center;
+  /* color: #000000; */
+}
+
+.menu-background {
+  /* background-color: #e2bbb8; */
+  z-index: 5;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #000000 !important;
+  transition: background-color 0.3s ease;
+}
+
+.menu-background-relative {
+  background-color: #e2bbb8;
+  z-index: 5;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #000000 !important;
+  transition: background-color 0.3s ease;
+}
+
+.menu-background-full {
+  background-color: #e2bbb8;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  margin: 0;
+  top: 0;
+  padding: 0;
+  color: #000000 !important;
+
+  transition: background-color 0.3s ease;
+}
+.main-menu > li {
+  padding: 25px 0;
+}
+.main-menu {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.logo-container {
+  text-align: start;
+}
+
+.header-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-btn-container .btn {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  /* background-color: #de3660; */
+  color: #de3660;
+  border: 2px solid #de3660;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+.header-btn-container .btn > i {
+  padding-left: 10px;
+}
+.header-btn-container .btn:hover {
+  background-color: #de3660;
+  color: #ffffff;
+  border: 2px solid #de3660;
+}
+
+.header-btn-item {
+  font-size: 25px;
+  margin: 0 10px;
+  color: #de3660;
+}
+
+.mobile-menu-trigger {
+  display: none;
+  font-size: 27px;
+}
+
+.mobile-menu-close {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .header-btn-container .btn {
+    font-size: 10px;
+  }
+  .header-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-menu-close {
+    display: block;
+    font-size: 40px;
+    padding: 0 10px;
+  }
+  .mobile-menu-trigger {
+    display: flex;
+  }
+  .main-menu > li {
+    padding: 30px 10px;
+  }
+  .main-menu-container {
+    padding: 15px 10px;
+    justify-content: space-between;
+  }
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    color: #000;
+    background-color: #ffffff;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    transition: all 0.5s ease;
+    transform: translate(-100%);
+  }
+}
+
+.cart-full {
+  background-color: springgreen;
+  color: wheat;
+  text-align: center;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: initial;
+  position: relative;
+  top: -17px;
+  left: 7px;
+}

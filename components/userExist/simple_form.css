@@ -1,0 +1,53 @@
+.form-content {
+  display: flex;
+  color: #ffffff;
+  background-color: #171e21b3;
+  border: 2px solid #4b4b4bb4;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding: 25px;
+  min-width: 30vw;
+  height: 70vh;
+}
+.forgot-pass-container {
+  height: max-content !important;
+}
+.password-alert {
+  font-size: smaller;
+  margin-top: 10px;
+}
+.forgot-pass-title {
+  margin: 20px 0 !important;
+}
+.form-content > .logo-container {
+  background-color: #0a0202;
+  border-radius: 50%;
+  padding: 5px;
+}
+.logo-container {
+  align-self: center;
+}
+
+.form-title h3 {
+  margin-bottom: 40px;
+  color: snow;
+}
+
+.countdown {
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 990px) {
+  .form-content {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  .form-content {
+    width: 95%;
+  }
+}

@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Vaziri";
+  src: url("./Vazir-Regular/Vazir-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lalezar";
+  src: url("./Lalezar.font/DigiLalezarPlus.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aquire";
+  src: url("./access-angles-font/AccessAnglesDemoRegular-9Yjjj.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Caveat";
+  src: url("./Caveat/Caveat-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
