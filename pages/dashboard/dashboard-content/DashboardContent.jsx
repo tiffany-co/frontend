@@ -9,7 +9,7 @@ export default function DashboardContent() {
 
   return (
     <DashboardLayout>
-      <>{/* <h3>خوش آمدید</h3> */}</>
+      <h3>داشبورد کاربری</h3>
     </DashboardLayout>
   );
 }

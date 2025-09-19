@@ -63,7 +63,7 @@ function MegaMenu({ backgrondOn, CategoryType }) {
               <i className="fa fa-bars"></i>
             </div>
 
-            <div className="header-btn-container">
+            {/* <div className="header-btn-container">
               {!token ? (
                 <Link href={"/login"} className="btn">
                   <i className="fa fa-sign-in-alt"></i>ورود | ثبت نام
@@ -82,7 +82,7 @@ function MegaMenu({ backgrondOn, CategoryType }) {
                   </Link>
                 </>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="menu-container">
