@@ -1,7 +1,7 @@
 import DashboardLayout from "@/layouts/dashboardLayout";
 import React, { useEffect, useState } from "react";
 import "./profile.css";
-import { useCurrentUser, useUserUpdate } from "@/hooks/queries/useCurrentUser";
+import { useCurrentUser, useCurrentUserUpdate } from "@/hooks/queries/useUser";
 import Swal from "sweetalert2";
 
 function Profile() {
@@ -9,7 +9,7 @@ function Profile() {
   const [fullName, setFullName] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
   const [newPass, setNewPass] = useState();
-  const userUpdateMutation = useUserUpdate();
+  const userUpdateMutation = useCurrentUserUpdate();
   const { data: user } = useCurrentUser();
   useEffect(() => {
     if (user) {
@@ -60,7 +60,7 @@ function Profile() {
               setPhoneNumber(e.target.value);
             }}
             value={phoneNumber}
-            type="number"
+            type="tel"
             className=" input-form"
           />
           <label htmlFor="description">رمز جدید</label>

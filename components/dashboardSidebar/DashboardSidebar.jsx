@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./dashboard-sidebar.css";
 import toFarsiNumeral from "../../utils/ToFarsiNum";
 import { logout } from "@/services/auth.service";
-import { useCurrentUser } from "@/hooks/queries/useCurrentUser";
+import { useCurrentUser } from "@/hooks/queries/useUser";
 import Spinner from "../spinner";
 import { useRouter } from "next/navigation";
 
@@ -54,7 +54,10 @@ function Sidebar() {
               </Link>
               {isAdmin ? (
                 <>
-                  <Link className="sidebar-link" href={""}>
+                  <Link
+                    className="sidebar-link"
+                    href={"/dashboard/users-management"}
+                  >
                     <li className="sidear-dashboard-menu-item">
                       <i className="fa fa-user-friends"></i> مدیریت کاربران
                     </li>
@@ -103,37 +106,20 @@ function Sidebar() {
                   </Link>
                 </ul>
               </li>
-              <Link
-                className="sidebar-link"
-                href={""}
-              >
+              <Link className="sidebar-link" href={""}>
                 <li className="sidear-dashboard-menu-item">
                   <i className="fa fa-money-bill-wave"></i> معامله جدید
                 </li>
               </Link>
-
-              <li
-                onClick={() => {
-                  setisVisibleDis(!isVisibleDis);
-                }}
-                className="sidear-dashboard-menu-item dropdown"
+              <Link
+                className="sidebar-link"
+                href={"/dashboard/contact-management"}
               >
-                <div className="sidebar-link">
+                <li className="sidear-dashboard-menu-item">
+                  {" "}
                   <i className="fa fa-address-book"></i> مخاطبان{" "}
-                  <i className="fas fa-angle-left"></i>
-                </div>
-                <ul
-                  className={`dropdown-content ${
-                    isVisibleDis ? "dropdown-visible" : null
-                  }`}
-                >
-                  <Link href={""}>
-                    <li className="sidear-dashboard-menu-item">
-                      ساخت مخاطب جدید{" "}
-                    </li>
-                  </Link>
-                </ul>
-              </li>
+                </li>
+              </Link>
               <Link className="sidebar-link" href={"/dashboard/profile"}>
                 <li className="sidear-dashboard-menu-item">
                   {" "}
