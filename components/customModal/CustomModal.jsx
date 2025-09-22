@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Box } from "@mui/material";
+import { Modal, Box, Button } from "@mui/material";
 
 const CustomModal = ({ open, onClose, title, children, width = 400 }) => {
   return (
@@ -24,6 +24,11 @@ const CustomModal = ({ open, onClose, title, children, width = 400 }) => {
           p: 3,
         }}
       >
+        <div style={{ position: "absolute", left: 0, top: 0 }}>
+          <Button color="error" onClick={onClose}>
+            ×
+          </Button>
+        </div>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <h5>{title}</h5>
         </Box>
