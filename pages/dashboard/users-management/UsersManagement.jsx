@@ -6,14 +6,33 @@ import {
   useUserUpdate,
   useUserDelete,
 } from "@/hooks/queries/useUser";
+import { useState } from "react";
+import CustomModal from "@/components/customModal";
+import { Button } from "@mui/material";
+import PermissionsList from "@/components/permissionsList";
 
 export default function UsersManagement() {
-  // columns 
+  const [selectedUser, setSelectedUser] = useState(null);
+  // columns
   const userColumns = [
     { field: "username", headerName: "نام کاربری" },
     { field: "full_name", headerName: "نام کامل" },
     { field: "phone_number", headerName: "شماره تماس" },
     { field: "role", headerName: "نقش" },
+    {
+      field: "actions",
+      headerName: "",
+      render: (row) => (
+        <Button
+          size="small"
+          variant="outlined"
+          color="info"
+          onClick={() => setSelectedUser(row)}
+        >
+          مشاهده مجوزهای کاربر
+        </Button>
+      ),
+    },
   ];
 
   // for UserForm (create/edit)
@@ -60,6 +79,15 @@ export default function UsersManagement() {
         columns={userColumns}
         formFields={userFormFields}
       />
+      <CustomModal
+        open={!!selectedUser}
+        onClose={() => setSelectedUser(null)}
+        title={`مجوزهای ${selectedUser?.full_name || ""}`}
+      >
+        {selectedUser && (
+          <PermissionsList userId={selectedUser.id} isAdminView />
+        )}
+      </CustomModal>
     </DashboardLayout>
   );
 }

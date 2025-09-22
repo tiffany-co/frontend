@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./profile.css";
 import { useCurrentUser, useCurrentUserUpdate } from "@/hooks/queries/useUser";
 import Swal from "sweetalert2";
+import PermissionsList from "@/components/permissionsList";
 
 function Profile() {
   const [username, setUsername] = useState();
@@ -34,6 +35,7 @@ function Profile() {
     <>
       <DashboardLayout>
         <h3>حساب کاربری</h3>
+        <PermissionsList />
         <div className=" col-12 col-md-6 row profile-container">
           <label htmlFor="username">نام کاربری</label>
           <input
