@@ -62,7 +62,7 @@ function Sidebar() {
                       <i className="fa fa-user-friends"></i> مدیریت کاربران
                     </li>
                   </Link>
-                  <Link className="sidebar-link" href={""}>
+                  <Link className="sidebar-link" href={"/dashboard/audit-logs"}>
                     <li className="sidear-dashboard-menu-item">
                       <i className="fa fa-history sss"></i> لاگ های برنامه
                     </li>
