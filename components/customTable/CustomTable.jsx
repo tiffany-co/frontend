@@ -1,16 +1,6 @@
 import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Card,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Card, Typography, useMediaQuery } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import { Box } from "@mui/system";
 
@@ -70,30 +60,21 @@ const CustomTable = ({ columns, data }) => {
   //show as table in desktop
   return (
     <ThemeProvider theme={setfont}>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {columns.map((col, index) => (
-                <TableCell key={index}>{col.headerName}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row, rowIndex) => (
-              <TableRow key={rowIndex}>
-                {columns.map((col, colIndex) => (
-                  <TableCell key={colIndex}>
-                    {typeof col.render === "function"
-                      ? col.render(row)
-                      : row[col.field]}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <div style={{ height: 600, width: "100%" }}>
+        {" "}
+        {/* Adjust height/width as needed */}
+        <DataGrid
+          rows={data}
+          columns={columns.map((col) => ({
+            ...col,
+            renderCell:
+              typeof col.render === "function"
+                ? (params) => col.render(params.row)
+                : undefined,
+          }))}
+          getRowId={(row) => row.id}
+        />
+      </div>
     </ThemeProvider>
   );
 };

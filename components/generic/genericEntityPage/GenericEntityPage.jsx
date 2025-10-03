@@ -24,6 +24,8 @@ function GenericEntityPage({
   useDelete,
   columns,
   formFields,
+  widthModal,
+  refetch,
 }) {
   const { data: allData, isLoading } = useAll();
   const createMutation = useCreate();
@@ -46,6 +48,7 @@ function GenericEntityPage({
       confirmButtonText: "بله، حذف شود",
       cancelButtonText: "لغو",
     }).then((result) => {
+      refetch();
       if (result.isConfirmed) {
         deleteMutation.mutate(id, {
           onSuccess: () => {
@@ -60,11 +63,13 @@ function GenericEntityPage({
   };
 
   const handleEdit = (item) => {
+    refetch();
     setSelectedItem(item);
     setOpen(true);
   };
 
   const handleCreate = () => {
+    refetch();
     setSelectedItem(null);
     setOpen(true);
   };
@@ -74,32 +79,40 @@ function GenericEntityPage({
   const tableColumns = [
     ...columns,
     {
-      field: "actions",
+      field: "edit",
       headerName: "",
+      sortable: false,
       render: (row) => (
-        <div style={{ display: "flex", gap: "0.5rem" }}>
-          <Button
-            size="small"
-            variant="outlined"
-            onClick={() => handleEdit(row)}
-          >
-            ویرایش
-          </Button>
-          <Button
-            size="small"
-            color="error"
-            onClick={() => handleDelete(row.id, row.first_name || row.username)}
-          >
-            حذف
-          </Button>
-        </div>
+        <Button size="small" variant="outlined" onClick={() => handleEdit(row)}>
+          ویرایش
+        </Button>
+      ),
+    },
+    {
+      field: "delete",
+      headerName: "",
+      sortable: false,
+      render: (row) => (
+        <Button
+          size="small"
+          color="error"
+          onClick={() => handleDelete(row.id, row.first_name || row.username)}
+        >
+          حذف
+        </Button>
       ),
     },
   ];
 
   return (
     <>
-      <div style={{ marginBottom: "1rem" }}>
+      <div
+        style={{
+          marginBottom: "1rem",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
         <Button
           style={{ fontFamily: "Vaziri", marginTop: "5px" }}
           variant="contained"
@@ -112,6 +125,7 @@ function GenericEntityPage({
       <CustomTable columns={tableColumns} data={rows} />
 
       <CustomModal
+        width={widthModal}
         open={open}
         onClose={() => setOpen(false)}
         title={selectedItem ? `ویرایش ${entityName}` : `ایجاد ${entityName}`}

@@ -22,6 +22,8 @@ const CustomModal = ({ open, onClose, title, children, width = 400 }) => {
           borderRadius: 2,
           boxShadow: 24,
           p: 3,
+          overflowY: "scroll",
+          height:"95vh"
         }}
       >
         <div style={{ position: "absolute", left: 0, top: 0 }}>
