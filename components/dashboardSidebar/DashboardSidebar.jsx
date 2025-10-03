@@ -106,9 +106,9 @@ function Sidebar() {
                   </Link>
                 </ul>
               </li>
-              <Link className="sidebar-link" href={""}>
+              <Link className="sidebar-link" href={"/dashboard/transactions"}>
                 <li className="sidear-dashboard-menu-item">
-                  <i className="fa fa-money-bill-wave"></i> معامله جدید
+                  <i className="fa fa-money-bill-wave"></i> معاملات
                 </li>
               </Link>
               <Link
