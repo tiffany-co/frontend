@@ -48,7 +48,7 @@ function GenericEntityPage({
       confirmButtonText: "بله، حذف شود",
       cancelButtonText: "لغو",
     }).then((result) => {
-      refetch();
+      refetch && refetch();
       if (result.isConfirmed) {
         deleteMutation.mutate(id, {
           onSuccess: () => {
@@ -63,13 +63,13 @@ function GenericEntityPage({
   };
 
   const handleEdit = (item) => {
-    refetch();
+    refetch && refetch();
     setSelectedItem(item);
     setOpen(true);
   };
 
   const handleCreate = () => {
-    refetch();
+    refetch && refetch();
     setSelectedItem(null);
     setOpen(true);
   };
@@ -96,7 +96,9 @@ function GenericEntityPage({
         <Button
           size="small"
           color="error"
-          onClick={() => handleDelete(row.id, row.first_name || row.username)}
+          onClick={() =>
+            handleDelete(row.id, row.first_name || row.username || row.name)
+          }
         >
           حذف
         </Button>
@@ -109,8 +111,6 @@ function GenericEntityPage({
       <div
         style={{
           marginBottom: "1rem",
-          display: "flex",
-          justifyContent: "flex-end",
         }}
       >
         <Button

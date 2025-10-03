@@ -1,0 +1,9 @@
+.transactions-table > thead > tr > th {
+  border: 1px solid #ccc;
+  padding: 4px;
+}
+
+.transactions-table > tbody > tr > td {
+  padding: 4px;
+  border: 1px solid #ccc;
+}

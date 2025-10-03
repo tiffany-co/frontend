@@ -11,7 +11,7 @@ function Sidebar() {
   const { data: user, isLoading } = useCurrentUser();
   const [isAdmin, setIsAdmin] = useState(false);
   const [isVisible, setisVisible] = useState(false);
-  const [isVisibleDis, setisVisibleDis] = useState(false);
+  const [isVisiblePy, setisVisiblePy] = useState(false);
 
   useEffect(() => {
     user?.role == "admin" ? setIsAdmin(true) : setIsAdmin(false);
@@ -108,9 +108,41 @@ function Sidebar() {
               </li>
               <Link className="sidebar-link" href={"/dashboard/transactions"}>
                 <li className="sidear-dashboard-menu-item">
-                  <i className="fa fa-money-bill-wave"></i> معاملات
+                  <i className="fa fa-exchange-alt"></i> معاملات
                 </li>
               </Link>
+              <li
+                onClick={() => {
+                  setisVisiblePy(!isVisiblePy);
+                }}
+                className="sidear-dashboard-menu-item dropdown"
+              >
+                <div className="sidebar-link" href={""}>
+                  <i className="fa fa-money-bill-wave"></i> پرداخت ها{" "}
+                  <i className="fas fa-angle-left"></i>
+                </div>
+                <ul
+                  className={`dropdown-content ${
+                    isVisiblePy ? "dropdown-visible" : null
+                  }`}
+                >
+                  <Link href={"/dashboard/bank-accounts"}>
+                    <li className="sidear-dashboard-menu-item">
+                      لیست کارت های بانکی
+                    </li>
+                  </Link>
+                  <Link href={"/dashboard/payments-management"}>
+                    <li className="sidear-dashboard-menu-item">
+                      مدیریت پرداخت ها
+                    </li>
+                  </Link>
+                  <Link href={""}>
+                    <li className="sidear-dashboard-menu-item">
+                      مقدار قابل پرداخت سالانه
+                    </li>
+                  </Link>
+                </ul>
+              </li>
               <Link
                 className="sidebar-link"
                 href={"/dashboard/contact-management"}
@@ -120,6 +152,7 @@ function Sidebar() {
                   <i className="fa fa-address-book"></i> مخاطبان{" "}
                 </li>
               </Link>
+
               <Link className="sidebar-link" href={"/dashboard/profile"}>
                 <li className="sidear-dashboard-menu-item">
                   {" "}

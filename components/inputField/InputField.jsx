@@ -7,8 +7,20 @@ function InputField({
   error,
   as = "input", // input | select | textarea
   options = [], //  just for select
+  optionsFrom,
+  getOptionLabel,
+  getOptionValue,
   ...rest
 }) {
+  let selectOptions = options;
+  if (optionsFrom && as === "select") {
+    const { data } = optionsFrom();
+    selectOptions =
+      data?.map((item) => ({
+        value: getOptionValue(item),
+        label: getOptionLabel(item),
+      })) || [];
+  }
   return (
     <div style={{ width: "100%" }}>
       <label htmlFor={id}>{label}</label>
@@ -40,7 +52,7 @@ function InputField({
           {...rest}
         >
           <option value="">انتخاب کنید...</option>
-          {options.map((opt) => (
+          {selectOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>
               {opt.label}
             </option>
@@ -49,7 +61,7 @@ function InputField({
       )}
 
       {error && (
-        <p style={{ color: "red", fontSize: "small", marginTop:"3px" }}>
+        <p style={{ color: "red", fontSize: "small", marginTop: "3px" }}>
           {error.message}
         </p>
       )}

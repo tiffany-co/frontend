@@ -7,6 +7,14 @@ export const getAllContacts = async () => {
     throw error.response?.data || error;
   }
 };
+export const getContact = async (id) => {
+  try {
+    const response = await http.get(`/contacts/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};
 
 export const createContact = async ({
   first_name,

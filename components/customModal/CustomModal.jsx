@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Box, Button } from "@mui/material";
 
-const CustomModal = ({ open, onClose, title, children, width = 400 }) => {
+const CustomModal = ({ open, onClose, title, children, width = "80%" }) => {
   return (
     <Modal
       aria-labelledby="unstyled-modal-title"

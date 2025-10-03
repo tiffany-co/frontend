@@ -2,6 +2,7 @@ import {
   createContact,
   deleteContact,
   getAllContacts,
+  getContact,
   updateContact,
 } from "@/services/contact.service";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -13,7 +14,14 @@ export const useAllContacts = () => {
     },
   });
 };
-
+export const useContact = (id) => {
+  return useQuery(["Contact", id], () => getContact(id), {
+    enabled: !!id,
+    onError: (error) => {
+      return error;
+    },
+  });
+};
 export const useContactCreate = () => {
   const queryClient = useQueryClient();
   return useMutation(createContact, {

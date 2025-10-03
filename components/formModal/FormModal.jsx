@@ -27,10 +27,9 @@ function FormModal({
           return obj;
         }, {})
       : data;
-  // اگه در حالت ویرایش هستیم id رو هم اضافه کن
-  if (isEdit && defaultValues?.id) {
-    payload.id = defaultValues.id;
-  }
+    if (isEdit && defaultValues?.id) {
+      payload.id = defaultValues.id;
+    }
     mutation.mutate(payload, {
       onSuccess: () => {
         Swal.fire(
@@ -51,19 +50,24 @@ function FormModal({
       onSubmit={handleSubmit(onSubmit)}
       className="col-12 col-md-6 row container"
     >
-      {formFields.map((field) => (
-        <InputField
-          key={field.id}
-          id={field.id}
-          label={field.label}
-          type={field.type || "text"}
-          as={field.as || "input"}
-          options={field.options || []}
-          register={register}
-          rules={field.rules}
-          error={errors[field.id]}
-        />
-      ))}
+      {formFields.map((field) => {
+        return (
+          <InputField
+            key={field.id}
+            id={field.id}
+            label={field.label}
+            type={field.type || "text"}
+            as={field.as || "input"}
+            options={field.options || []}
+            register={register}
+            rules={field.rules}
+            error={errors[field.id]}
+            optionsFrom={field.optionsFrom}
+            getOptionLabel={field.getOptionLabel}
+            getOptionValue={field.getOptionValue}
+          />
+        );
+      })}
 
       <button
         type="submit"
