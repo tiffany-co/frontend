@@ -14,6 +14,7 @@ function FormModal({
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, dirtyFields },
   } = useForm({ defaultValues });
 
@@ -58,6 +59,7 @@ function FormModal({
             label={field.label}
             type={field.type || "text"}
             as={field.as || "input"}
+            control={control}
             options={field.options || []}
             register={register}
             rules={field.rules}

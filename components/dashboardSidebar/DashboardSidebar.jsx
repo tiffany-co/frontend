@@ -136,10 +136,8 @@ function Sidebar() {
                       مدیریت پرداخت ها
                     </li>
                   </Link>
-                  <Link href={""}>
-                    <li className="sidear-dashboard-menu-item">
-                      مقدار قابل پرداخت سالانه
-                    </li>
+                  <Link href={"/dashboard/account-ledger"}>
+                    <li className="sidear-dashboard-menu-item">دفتر حساب</li>
                   </Link>
                 </ul>
               </li>

@@ -1,8 +1,13 @@
+import { Controller } from "react-hook-form";
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 function InputField({
   label,
   id,
   type = "text",
   register,
+  control,
   rules,
   error,
   as = "input", // input | select | textarea
@@ -32,6 +37,26 @@ function InputField({
           className={`input-form ${error ? "input-error" : ""}`}
           {...register(id, rules)}
           {...rest}
+        />
+      )}
+      {as === "datepicker" && (
+        <Controller
+          name={id}
+          control={control}
+          rules={rules}
+          render={({ field }) => (
+            <DatePicker
+              value={field.value || ""}
+              onChange={(val) => {
+                field.onChange(val ? val.toDate?.() || val : null);
+              }}
+              calendar={persian}
+              locale={persian_fa}
+              inputClass="input-form"
+              placeholder="تاریخ را انتخاب کنید"
+              {...rest}
+            />
+          )}
         />
       )}
 

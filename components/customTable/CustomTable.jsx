@@ -3,7 +3,6 @@ import { Card, Typography, useMediaQuery } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import "./custom-table.css";
 
 const CustomTable = ({ columns, data }) => {
   const theme = useTheme();
