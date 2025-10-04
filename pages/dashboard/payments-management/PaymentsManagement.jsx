@@ -29,7 +29,7 @@ export default function PaymentsManagement() {
       render: (row) => new Date(row.created_at).toLocaleString("fa-IR"),
     },
     {
-      field: "created_at",
+      field: "updated_at",
       headerName: "تاریخ بروزرسانی",
       render: (row) => new Date(row.updated_at).toLocaleString("fa-IR"),
     },
@@ -172,11 +172,11 @@ export default function PaymentsManagement() {
     },
     {
       id: "photo_holder_id",
-      label: "عکس فاکتور",
+      label: "نگه دارنده عکس",
       as: "select",
       options: [
-        { value: null, label: "عدم دسترسی" },
-        { value: user.id, label: "در دسترس" },
+        { value: null, label: "نیستم" },
+        { value: user.id, label: "هستم" },
       ],
       rules: { required: "جهت تراکنش اجباری است" },
     },

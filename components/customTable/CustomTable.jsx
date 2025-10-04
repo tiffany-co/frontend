@@ -3,6 +3,7 @@ import { Card, Typography, useMediaQuery } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import { Box } from "@mui/system";
+import "./custom-table.css";
 
 const CustomTable = ({ columns, data }) => {
   const theme = useTheme();
@@ -56,16 +57,32 @@ const CustomTable = ({ columns, data }) => {
       </ThemeProvider>
     );
   }
+  function getTextWidth(text, font = "14px Roboto") {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    context.font = font;
+    return context.measureText(text).width;
+  }
+
+  function autoSizeColumns(data, columns) {
+    return columns.map((col) => {
+      const maxText = Math.max(
+        getTextWidth(col.headerName || ""),
+        ...data.map((row) =>
+          getTextWidth(row[col.field] ? String(row[col.field]) : "")
+        )
+      );
+      return { ...col, width: maxText + 40 };
+    });
+  }
 
   //show as table in desktop
   return (
     <ThemeProvider theme={setfont}>
       <div style={{ height: 600, width: "100%" }}>
-        {" "}
-        {/* Adjust height/width as needed */}
         <DataGrid
           rows={data}
-          columns={columns.map((col) => ({
+          columns={autoSizeColumns(data, columns).map((col) => ({
             ...col,
             renderCell:
               typeof col.render === "function"

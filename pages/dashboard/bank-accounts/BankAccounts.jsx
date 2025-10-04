@@ -8,9 +8,9 @@ import {
 import DashboardLayout from "@/layouts/dashboardLayout";
 
 const columns = [
-  { field: "name",width:"200", headerName: "نام حساب" },
-  { field: "description",width:"300", headerName: "توضیحات" },
-  { field: "card_number" ,width:"200", headerName: "شماره کارت" },
+  { field: "name", headerName: "نام حساب" },
+  { field: "description", headerName: "توضیحات" },
+  { field: "card_number" , headerName: "شماره کارت" },
 ];
 
 const formFields = [
